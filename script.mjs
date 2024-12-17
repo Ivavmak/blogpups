@@ -57,7 +57,7 @@ function renderPost(image, text, date) {
   postElement.innerHTML = `
     <img src="${image}" alt="Картинка поста">
     <div class="post-content">
-      <p class="post-text">${text}</p>
+      <p class="post-text">${truncateText(text)}</p>
       <p class="post-date">${date}</p>
     </div>
   `;
@@ -68,6 +68,10 @@ function renderPost(image, text, date) {
   });
 
   container.appendChild(postElement);
+}
+
+function truncateText(text, maxLength = 50) {
+  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
 }
 
 // Функция для открытия модального окна просмотра поста
