@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Блог для Пупса</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> <!-- Подключим стили позже -->
   <script src="script.mjs" type="module"></script>
 </head>
 <body>
+  <!-- Контейнер для индикатора загрузки -->
+	<div id="loading" class="hidden">
+		<p>Загрузка постов...</p>
+		<div class="loader"></div>
+	</div>
+
   <!-- Контейнер для всех постов -->
   <div id="post-container"></div>
   
@@ -35,5 +41,6 @@
     </div>
   </div>
 
+  <!-- Подключим JS позже -->
 </body>
 </html>
