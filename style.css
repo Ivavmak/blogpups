@@ -61,17 +61,18 @@ body {
 /* Закреплённая кнопка */
 #add-post-btn {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #a0e19c;
-    /* Нежно-зелёный */
+    bottom: 20px; /* Отступ снизу */
+    left: 20px;   /* Отступ слева */
+    right: 20px;  /* Отступ справа */
+    max-width: calc(100% - 40px); /* Учитывает отступы слева и справа */
+    background-color: #a0e19c; /* Нежно-зелёный цвет */
     color: #333;
     border: none;
-    border-radius: 30px;
-    padding: 15px 30px;
+    border-radius: 20px;
+    padding: 15px 0;
     font-size: 16px;
     font-weight: bold;
+    text-align: center;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
