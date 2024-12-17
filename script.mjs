@@ -35,18 +35,33 @@ function addPost(image, text) {
 
 // Функция для загрузки постов
 function loadPosts() {
-  onValue(postsRef, (snapshot) => {
-    const postsContainer = document.getElementById("post-container");
-    postsContainer.innerHTML = ""; // Очищаем контейнер перед загрузкой
+  const loadingElement = document.getElementById("loading");
+  loadingElement.classList.remove("hidden"); // Показываем индикатор загрузки
 
-    const data = snapshot.val();
-    if (data) {
-      Object.values(data).forEach((post) => {
-        renderPost(post.image, post.text, post.date);
-      });
+  onValue(
+    postsRef,
+    (snapshot) => {
+      const postsContainer = document.getElementById("post-container");
+      postsContainer.innerHTML = ""; // Очищаем контейнер перед загрузкой
+
+      const data = snapshot.val();
+      if (data) {
+        Object.values(data).forEach((post) => {
+          renderPost(post.image, post.text, post.date);
+        });
+      }
+
+      // Скрываем индикатор загрузки после загрузки постов
+      loadingElement.classList.add("hidden");
+    },
+    (error) => {
+      console.error("Ошибка при загрузке постов:", error);
+      loadingElement.classList.add("hidden"); // Скрываем индикатор даже при ошибке
     }
-  });
+  );
 }
+
+
 
 // Функция рендеринга одного поста
 function renderPost(image, text, date) {
