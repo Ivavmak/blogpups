@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог для Пупса</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.mjs" type="module"></script>
+</head>
+
+<body>
+  <!-- Контейнер для индикатора загрузки -->
+  <div id="loading" class="hidden">
+    <p>Загрузка постов...</p>
+    <div class="loader"></div>
+  </div>
+
+  <!-- Контейнер для всех постов -->
+  <div id="post-container"></div>
+
+  <!-- Закреплённая кнопка -->
+  <button id="add-post-btn">Добавить пост</button>
+
+  <!-- Модальное окно для добавления поста -->
+  <div id="modal-add-post" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <h2>Новый пост</h2>
+      <input type="file" id="post-image" accept="image/*">
+      <textarea id="post-text" placeholder="Введите описание поста"></textarea>
+      <button id="save-post-btn">Опубликовать</button>
+    </div>
+  </div>
+
+  <!-- Модальное окно для просмотра поста -->
+  <div id="modal-view-post" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="close-view-modal">&times;</span>
+      <img id="view-post-image" src="" alt="Картинка поста">
+      <p id="view-post-text"></p>
+      <p id="view-post-date"></p>
+    </div>
+  </div>
+</body>
+
+</html>
