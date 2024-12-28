@@ -99,7 +99,7 @@ async function addPost(imageUrls, description) {
   }
 }
 
-async function resizeImage(file, maxWidth = 360, maxHeight = 480) {
+async function resizeImage(file, maxWidth = 720, maxHeight = 960) {
   const img = new Image();
   img.src = URL.createObjectURL(file);
 
@@ -115,7 +115,7 @@ async function resizeImage(file, maxWidth = 360, maxHeight = 480) {
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
   return new Promise((resolve) => {
-    canvas.toBlob(resolve, "image/jpeg", 0.8); // JPEG с 80% качеством
+    canvas.toBlob(resolve, "image/jpeg", 1); // JPEG с 80% качеством
   });
 }
 
@@ -124,7 +124,7 @@ async function uploadImage(file) {
   const safeFileName = `${Date.now()}-${file.name.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9._-]/g, "")}`;
 
   // Сжатие для маленькой версии (360x480)
-  const resizedFile = await resizeImage(file, 360, 480);
+  const resizedFile = await resizeImage(file, 720, 960);
 
   // Загружаем маленькую версию
   const { data: smallData, error: smallError } = await supabase.storage
