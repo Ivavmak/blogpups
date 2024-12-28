@@ -1,0 +1,276 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    /* Светлый фон */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    /* Чтобы кнопка не перекрывала контент */
+}
+
+/* Контейнер для постов */
+#post-container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+/* Пост */
+.post {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post .post-content {
+    padding: 15px;
+}
+
+.post .post-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.post .post-date {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+}
+
+/* Закреплённая кнопка */
+#add-post-btn {
+    position: fixed;
+    bottom: 20px; /* Отступ снизу */
+    left: 50%; /* Центрирование кнопки */
+    transform: translateX(-50%); /* Смещение на половину ширины */
+    width: calc(100% - 40px); /* Ширина с учетом отступов */
+    max-width: 600px; /* Ширина как у постов */
+    background-color: #a0e19c; /* Цвет кнопки */
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+#add-post-btn:hover {
+    background-color: #8bd787;
+}
+
+/* Модальные окна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    /* Ограничиваем ширину на мобильных */
+    max-width: 400px;
+    /* Максимальная ширина */
+    max-height: 90vh;
+    /* Ограничение по высоте */
+    overflow-y: auto;
+    /* Включаем прокрутку при большом контенте */
+    position: relative;
+    word-wrap: break-word;
+    /* Переносим длинные слова */
+    box-sizing: border-box;
+    /* Учитываем отступы внутри ширины */
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    resize: none;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #a0e19c;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8bd787;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Скрытие модальных окон */
+.hidden {
+    display: none;
+}
+
+.modal-content .download-button {
+  color: #333;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #a0e19c;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.modal-content .download-button:hover {
+  background-color: #8bd787;
+}
+
+/* Полный просмотр поста */
+#view-post-image {
+    width: 100%;
+    height: auto;
+    /* Сохраняем пропорции изображения */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#view-post-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    /* Увеличиваем расстояние между строками */
+    overflow-wrap: break-word;
+    /* Гарантируем перенос слов */
+    word-wrap: break-word;
+    max-height: 60vh;
+    /* Ограничиваем высоту текста */
+    overflow-y: auto;
+    /* Добавляем прокрутку */
+    text-align: left;
+    /* Выравнивание текста по левому краю */
+    padding-right: 10px;
+    /* Добавляем небольшой внутренний отступ справа */
+}
+
+
+#view-post-date {
+    text-align: right;
+    font-size: 12px;
+    color: #888;
+}
+
+#loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 20;
+}
+
+#loading p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#loading.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.loader {
+    height: 35px;
+    width: 80px;
+    margin-left: 0px;
+    background:
+        radial-gradient(farthest-side, #ffd1d1 94%, #0000) 4px 22px/5px 5px,
+        radial-gradient(farthest-side, #ffd1d1 94%, #0000) 12px 18px/5px 5px,
+        radial-gradient(farthest-side, #ffd1d1 94%, #0000) 3px 6px/8px 8px,
+        radial-gradient(farthest-side, #eb8594 90%, #0000 94%) left/20px 100%,
+        #bd3342;
+    background-repeat: no-repeat;
+    border-radius: 0 50px 50px 0;
+    border-top-left-radius: 30px 40px;
+    border-bottom-left-radius: 30px 40px;
+    animation: l7 3s infinite steps(10);
+    position: relative;
+}
+
+.loader::before {
+    content: " ";
+    position: absolute;
+    inset: calc(50% - 8px) -10px calc(50% - 8px) auto;
+    width: 15px;
+    background: #bd3342;
+    clip-path: polygon(0 50%, 100% 0, 70% 50%, 100% 100%);
+}
+
+@keyframes l7 {
+    100% {
+        width: 20px;
+        margin-left: 60px;
+    }
+}
