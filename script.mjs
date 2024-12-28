@@ -99,7 +99,7 @@ async function addPost(imageUrls, description) {
   }
 }
 
-async function resizeImage(file, maxWidth = 720, maxHeight = 960) {
+async function resizeImage(file, maxWidth, maxHeight) {
   const img = new Image();
   img.src = URL.createObjectURL(file);
 
@@ -124,7 +124,7 @@ async function uploadImage(file) {
   const safeFileName = `${Date.now()}-${file.name.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9._-]/g, "")}`;
 
   // Сжатие для маленькой версии (360x480)
-  const resizedFile = await resizeImage(file, 720, 960);
+  const resizedFile = await resizeImage(file, 360, 480);
 
   // Загружаем маленькую версию
   const { data: smallData, error: smallError } = await supabase.storage
