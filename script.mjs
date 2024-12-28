@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
-const supabaseUrl = "https://huymzjfswngqudqkazyt.supabase.co"; // Замените на ваш проект Supabase URL
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh1eW16amZzd25ncXVkcWthenl0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUzMDU4OTgsImV4cCI6MjA1MDg4MTg5OH0.V18YpLMoL8Fr7Hv3LyXfIhzd2y6U9XzRSq8em0ngs30"; // Вставьте ваш публичный API-ключ
+const supabaseUrl = "https://huymzjfswngqudqkazyt.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh1eW16amZzd25ncXVkcWthenl0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUzMDU4OTgsImV4cCI6MjA1MDg4MTg5OH0.V18YpLMoL8Fr7Hv3LyXfIhzd2y6U9XzRSq8em0ngs30";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 let posts = [];
@@ -36,10 +36,10 @@ function renderPost(post) {
   const postElement = document.createElement("div");
   postElement.className = "post";
   postElement.innerHTML = `
-    <img src="${post.image}" alt="Картинка поста">
+    <img src="${post.image}" alt="Картинка поста" loading="lazy">
     <div class="post-content">
       <p class="post-text">${truncateText(post.description)}</p>
-      <p class="post-date">${post.date}</p> <!-- Просто выводим строку -->
+      <p class="post-date">${post.date}</p>
     </div>
   `;
   postElement.addEventListener("click", () => openPostModal(post.image, post.description, post.date));
