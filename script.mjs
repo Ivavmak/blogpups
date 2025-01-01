@@ -22,7 +22,7 @@ async function loadPosts(page = 1) {
     const { data, error } = await supabase
       .from("posts")
       .select("*")
-      .order("date", { ascending: true })
+      .order("id", { ascending: true })
       .range((page - 1) * postsPerPage, page * postsPerPage - 1);
 
     if (error) throw error;
